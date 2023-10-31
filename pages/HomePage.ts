@@ -1,15 +1,13 @@
 import { Page } from "@playwright/test";
-export default class HomePage{
-
+export default class Homepage {
     constructor(public page: Page) {
 
     }
-    async clickOnSpecialHotMenu() {
+
+    async clickOnHomeMenu() {
         await Promise.all([
-            this.page.waitForNavigation({waitUntil: "networkidle"}),
+            this.page.waitForLoadState("networkidle")
         ])
-        this.page.click("(//span[contains(text(),'special')]/../..)[2]")
+        await this.page.click("//span[contains(.,'Home')]");
     }
-
-
 }

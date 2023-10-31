@@ -25,8 +25,8 @@ test('Confirmation Dialog - Alert with OK and cancel', async ({page}) =>{
     page.on('dialog', async dialog=>{
         expect(dialog.type()).toContain('confirm')
         expect(dialog.message()).toContain('Press a button!')
-        await dialog.accept();  //close by using OK button
-        // await dialog.dismiss(); //close by using cancel
+        // await dialog.accept();  //close by using OK button
+        await dialog.dismiss(); //close by using cancel
 
     })
     await page.click('//button[normalize-space()="Confirm Box"]');
@@ -37,18 +37,18 @@ test('Confirmation Dialog - Alert with OK and cancel', async ({page}) =>{
 
 
 
-test ('Prompt Dialog', async ({page}) =>{
+test('Prompt Dialog', async ({page}) =>{
 
     await page.goto('https://testautomationpractice.blogspot.com/')
 
     // Enabling dialog window handling
     page.on('dialog', async dialog=>{
         expect(dialog.type()).toContain('prompt')
-        expect(dialog.message()).toContain('Harry potter')
-        await dialog.accept('John');  
+        expect(dialog.message()).toContain('Please enter your name:')
+        await dialog.accept();  
 
     })
     await page.click('//button[normalize-space()="Prompt"]');
-    await expect(page.locator('//p[@id="demo":]')).toHaveText('Hello John! How are you today?')
+    await expect(page.locator('#demo')).toHaveText('User cancelled the prompt.')
     await page.waitForTimeout(5000);
 });

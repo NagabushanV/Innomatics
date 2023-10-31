@@ -1,9 +1,11 @@
 import { test, Page, expect } from '@playwright/test';
 import RegisterPage from "../pages/registerPage"
 import LoginPage from "../pages/loginPage"
-import homePage from '../pages/HomePage';
-import SpecialHotPage from "../pages/SpecialHotPage"
-import HomePage from '../pages/HomePage';
+// import homePage from '../pages/HomePage';
+// import SpecialHotPage from "../pages/SpecialHotPage"
+// import HomePage from '../pages/HomePage';
+import HomeProductPage from '../pages/SpecialHotPage';
+import Homepage from '../pages/HomePage';
 
 const email = "nagabushanv11@gmail.com";
 const password = "Naga@1999";
@@ -31,18 +33,22 @@ test("Login test_02", async ({ page, baseURL })=>{
     await login.enterEmail(email);
     await login.enterLoginPassword(password);
     await login.clickLoginBtn();
-    expect(await page.title()).toBe('My Account');
-})
+    expect(await page.title()).toBe('Account Login');
+ })
 
-test("Add to cart test_03", async ({page, baseURL}) =>{
+ test("add to cart", async ({ page, baseURL }) => {
     const login = new LoginPage(page);
-    const homePage = new HomePage(page);
-    const special = new SpecialHotPage(page);
-    await page.goto("https://ecommerce-playground.lambdatest.io/index.php?,")
+    const homepage = new Homepage(page);
+    const product = new HomeProductPage(page);
+    await page.goto(`${baseURL}route=account/login`);
     await login.login(email, password);
-    await homePage.clickOnSpecialHotMenu();
-    await special.addFirstProductToTheCart();
-    const isCartVisible = await special.isToastVisible();
+    await homepage.clickOnHomeMenu();
+    await product.selectProducts();
+    await product.addFirstProductToTheCart();
+    const isCartVisible = await product.isToastVisible();
     expect(isCartVisible).toBeVisible();
-})
-})
+
+
+ })
+
+});

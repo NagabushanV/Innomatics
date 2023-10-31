@@ -1,20 +1,31 @@
 import { Page } from "@playwright/test";
-import HomePage from './HomePage';
+import { strict } from "assert";
+export default class HomeProductPage {
 
-export default class SpecialHotPage{
+    constructor(public page: Page) {
 
-    constructor(public page: Page) { }
+    }
+    async selectProducts(){
+        await Promise.all([
+            this.page.waitForLoadState("networkidle")
+        ])
+        await this.page.locator('//figure[@class="figure img-top"]').first().click();
 
+    }
     async addFirstProductToTheCart() {
-        await this.page.hover("//div[@class='image']/a", {
-            strict: false
-        });
+        await Promise.all([
+            this.page.waitForLoadState("networkidle")
+        ])
+        await this.page.hover('(//div[@class="image"]/a)',{strict:false});
         await this.page.locator("(//button[@title='Add to Cart'])").nth(0).click();
     }
+
     async isToastVisible() {
-        //await this.page.waitFor
-        const toast = this.page.locator("//a[.='view Cart ']");
-        await toast.waitFor({state:"visible"})
+        this.page.waitForLoadState("load");
+        const toast = this.page.locator("//a[.='View Cart ']");
+        await toast.waitFor({ state:"visible" });
         return toast;
+        
+
     }
 }
