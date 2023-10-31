@@ -1,9 +1,9 @@
-import { chromium } from '@playwright/test';
+import { chromium} from '@playwright/test';
 const { test , expect } = require("@playwright/test");
 
-test ('Amazon.in',async({browser})=>{
+test('Amazon.in',async({Browser})=>{
 
-    const context = await browser.newContext();
+    const context = await Browser.newContext();
     const page = await context.newPage();
 
     await page.goto("https://www.amazon.in/")

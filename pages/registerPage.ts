@@ -10,7 +10,7 @@ export default class RegisterPage{
 
     }
     async enterLastName(lastname: string) {
-        await this.page.locator("input[name='Lastname']").type(lastname);
+        await this.page.locator("//input[@id='input-lastname']").type(lastname);
     }
     async enterEmail(email: string) {
         await this.page.locator("input[name='email']").type(email);
@@ -31,9 +31,9 @@ export default class RegisterPage{
         await this.page.click("//Label[@for='input-agree']")
     }
     async clickContinueToRegister() {
-        await Promise.all([
-            this.page.waitForNavigation({waitUntil:"networkidle"})
-        ])
+        // await Promise.all([
+        //     this.page.waitForNavigation({waitUntil:"networkidle"})
+        // ])
         await this.page.click("input[value='Continue']")
     }
 }

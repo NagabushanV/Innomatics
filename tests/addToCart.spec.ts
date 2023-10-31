@@ -14,7 +14,7 @@ test("Register test_01", async ({ page, baseURL }) =>{
     const register = new RegisterPage(page);
     await page.goto("https://ecommerce-playground.lambdatest.io/index.php?route=account/register");
     await register.enterFirstName("Nagabushan");
-    await register.enterLastName("V")
+    await register.enterLastName("Vvv")
     await register.enterEmail(email);
     await register.enterTelephone("1234567890");
     await register.enterPassword(password);
@@ -31,7 +31,7 @@ test("Login test_02", async ({ page, baseURL })=>{
     await login.enterEmail(email);
     await login.enterLoginPassword(password);
     await login.clickLoginBtn();
-    expect(await page.title()).toBe("My Account");
+    expect(await page.title()).toBe('My Account');
 })
 
 test("Add to cart test_03", async ({page, baseURL}) =>{

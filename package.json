@@ -4,8 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "pretest": "tsc --incremental -p tests/tsconfig.json",
-      "test": "playwright test -c tests-out"
+    "test": "jest"
   },
   "keywords": [],
   "author": "",
@@ -13,7 +12,20 @@
   "devDependencies": {
     "@playwright/test": "^1.39.0",
     "@types/node": "^20.8.9"
+  },
+  "jest": {
+    "transform": {
+      "^.+\\.tsx?$": "ts-jest"
+    },
+    "moduleFileExtensions": [
+      "ts",
+      "tsx",
+      "js",
+      "jsx",
+      "json",
+      "node"
+    ],
+    "testTimeout": 120000
   }
   
-   
 }
