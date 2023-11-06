@@ -6,6 +6,6 @@ test("First test", async ({ page }) => {
 
 });
 
-test.afterAll(async ({ page }) => {
-  await page.close();
-});
+// test.afterAll(async ({ page }) => {
+//   await page.close();
+// });
