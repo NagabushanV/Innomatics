@@ -5,8 +5,8 @@ export default class Adminadduser {
     }
     async signin(passwordtype: string, UserName: string, FirstName: string, LastName: string, email: string, address1: string, phone: string, position: string, suburb: string,
         postcode: string) {
-        // await this.clickAdminBtn();
-        // await this.clickusersBtn();
+        await this.clickAdminBtn();
+        await this.clickusersBtn();
         await this.clickAddBtn();
         await this.clickRadioBtn();
         await this.selectpasswordtype();//(passwordtype);
@@ -28,17 +28,21 @@ export default class Adminadduser {
         await this.Selectgender(); 
         await this.Selectsecurityrole();
         await this.clicksaveBtn();
+        await this.clickcancelBtn();
+        await this.clickcloseBtn();
+        
 
       }
       async clickAdminBtn() {
         await this.page.getByRole('link', { name: 'Admin' }).click();
+        await this.page.waitForLoadState('load');
     }
     async clickusersBtn() {
         await this.page.click("(//span['.Users'])[2]");
     }
       async clickAddBtn() {
         await this.page.click("(//img[@alt='ctrlItem' ])[2]");
-        // await this.page.waitForLoadState();
+        await this.page.waitForLoadState('load');
     }
       async clickRadioBtn() {
         await this.page.click("//label[normalize-space()='Sign in with Username']");
@@ -46,9 +50,11 @@ export default class Adminadduser {
       async selectpasswordtype() {
         await this.page.locator("#react-select-4-placeholder").click();
         await this.page.getByText('Standard Password').click();
+        await this.page.waitForLoadState('networkidle');
       }
       async clickcheckbox() {
         await this.page.click("Enabled");
+        await this.page.waitForLoadState('networkidle');
       }
       async EnterUserName(UserName: string) {
         await this.page.locator("//input[@name='Username']").fill(UserName);
@@ -60,10 +66,10 @@ export default class Adminadduser {
         await this.page.locator("//input[@name='Lastname']").fill(LastName);
       }
       async Enteremail(email: string) {
-        await this.page.getByPlaceholder('Email Address').fill(email);
+        await this.page.getByPlaceholder("//input[@name='Email']").fill(email);
       }
       async Enteraddress1(adress1: string) {
-        await this.page.getByPlaceholder('Address 1').fill(adress1);
+        await this.page.getByPlaceholder("//input[@name='Address1']").fill(adress1);
       }
       async Selectcountry() {
         await this.page.click("[data-test-id='UserManagementUserManagementUserDetails34CountryStateDropDownFormGroupCountry'] svg').nth(1)");
@@ -108,9 +114,11 @@ export default class Adminadduser {
       async clicksaveBtn() {
         await this.page.locator('(//button[@title="Save"])[1]').click();
       }
-
-      
-    
-
+      async clickcancelBtn() {
+        await this.page.click("//button[@data-test-id='UserManagementUserManagementUserDetails34CancelCustomHoverButton']");
+      }
+      async clickcloseBtn() {
+        await this.page.click("//img[@alt='svgClose']");
+      } 
 
 }

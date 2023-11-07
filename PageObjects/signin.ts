@@ -1,6 +1,10 @@
 import { Page, expect } from "@playwright/test";
 
 export default class SigninPage {
+  loginToApp(superUser: any, companyCode: any, password: any) {
+      throw new Error("Method not implemented.");
+  }
+  gotoLoginPage: any;
 
   constructor(public page: Page, public jsonData: any) {
     this.page = page;

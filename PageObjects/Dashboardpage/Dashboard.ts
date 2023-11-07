@@ -8,9 +8,12 @@ export default class DashboardPage {
         await this.clickusersBtn();
       }
       async clickAdminBtn() {
-        await this.page.getByRole('link', { name: 'Admin' }).click();
+        await this.page.click("//p[.='Admin']");
+        await this.page.waitForLoadState('load');
+        
     }
     async clickusersBtn() {
+      await this.page.waitForLoadState('load');
       await this.page.click("//span[.='Users']");
     }
 

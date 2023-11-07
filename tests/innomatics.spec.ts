@@ -1,10 +1,12 @@
 import { test, Page, expect } from "@playwright/test";
 import SigninPage from '../PageObjects/signin';
 import DashboardPage from '../PageObjects/Dashboardpage/Dashboard';
-import Adminusers from '../PageObjects/AdminPages/UsersPage/AdminUserLogin';
+// import Adminusers from '../PageObjects/AdminPages/UsersPage/AdminUserLogin';
 import Adminadduser from "../PageObjects/AdminPages/Admin-users-Adduser";
 
 import jsonData from "../DataBase/signin.json";
+import Adminuserssearch from '../PageObjects/AdminPages/UsersPage/AdminUserLogin';
+import AdminuserDelete from "../PageObjects/AdminPages/UsersPage/Admin-user-Delete";
 // const jsonData = JSON.parse(JSON.stringify(require("../DataBase/signin.json")));
 
 const url = "https://uat-portal.efuelsystems.com/";
@@ -42,14 +44,16 @@ test("Dashboard page",async({page})=>{
   
 });
 
-test("verify that LIU should be able to add new users derails by clicking + icon",async({page})=>{
+test.only("verify that LIU should be able to add new users derails by clicking + icon",async({page})=>{
   const signin = new SigninPage(page, jsonData);
   const Dashboard = new DashboardPage(page);
   const Adduser = new Adminadduser(page);
 
   await Adduser.clickAdminBtn();
+  
   await Adduser.clickusersBtn();
   await Adduser.clickAddBtn();
+  
   await Adduser.clickRadioBtn();
   await Adduser.selectpasswordtype();
   await Adduser.clickcheckbox();
@@ -74,11 +78,26 @@ test("verify that LIU should be able to add new users derails by clicking + icon
 
 
 const firstname = "Aron"; 
-test.only("verify the LIU should be able to delete any user details",async({page})=>{
+test("verify the LIU should be able to search any user details",async({page})=>{
   const signin = new SigninPage(page, jsonData);
   const Dasboard = new DashboardPage(page);
-  const Searchuser = new Adminusers(page);
+  const Adduser = new Adminadduser(page);
+  const Searchuser = new Adminuserssearch(page);
+
   await Searchuser.enterfirstname(firstname);
   await Searchuser.clickviewBtn();
   expect(Searchuser.toHaveText());
+})
+
+test("verify the LIU should be able to delete any user details",async({page})=>{
+  const signin = new SigninPage(page,jsonData);
+  const Dasboard = new DashboardPage(page);
+  const Adduser = new Adminadduser(page);
+  const Searchuser = new Adminuserssearch(page);
+  const UserDelete = new AdminuserDelete(page);
+
+  await UserDelete.clickDeleteBtn();
+  await page.waitForLoadState('load');
+  await UserDelete.deleteAlertLocator();
+
 })

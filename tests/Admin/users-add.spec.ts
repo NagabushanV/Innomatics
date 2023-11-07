@@ -5,7 +5,7 @@ import Adminusers from '../../PageObjects/AdminPages/UsersPage/AdminUserLogin';
 import Adminadduser from '../../PageObjects/AdminPages/Admin-users-Adduser';
 import jsonData from '../../DataBase/signin.json';
 import Dataadd from '../../DataBase/Adduser.json';
-import { Sign } from "crypto";
+import Adminuserssearch from '../../PageObjects/AdminPages/UsersPage/AdminUserLogin';
 
 
 const UserName = "Nagabushan";
@@ -26,8 +26,8 @@ test("verify that LIU should be able to add new users derails by clicking + icon
     const Dashboard = new DashboardPage(page);
     const Adduser = new Adminadduser(page);
   
-    // await Adduser.clickAdminBtn();
-    // await Adduser.clickusersBtn();
+    await Adduser.clickAdminBtn();
+    await Adduser.clickusersBtn();
     await Adduser.clickAddBtn();
     await Adduser.clickRadioBtn();
     await Adduser.selectpasswordtype();
@@ -51,12 +51,12 @@ test("verify that LIU should be able to add new users derails by clicking + icon
     await Adduser.clicksaveBtn();
   })
 
+  
+ 
 
-  test("Verify that LIU should be able to delete any user details ",async({page})=>{
-    
-    const signin = new SigninPage(page, jsonData);
-    const Dashboard = new DashboardPage(page);
-    const Adduser = new Adminadduser(page);
-    
+
+
+
+test(" verify that LIU should be able to delete any user details",async({page})=>{
 
 })
