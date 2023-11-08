@@ -1,16 +1,19 @@
 import {Page ,expect} from '@playwright/test';
 export default class Adminadduser {
+  clickcheckbox() {
+    throw new Error("Method not implemented.");
+  }
     constructor(public page: Page) {
         this.page = page;
     }
-    async signin(passwordtype: string, UserName: string, FirstName: string, LastName: string, email: string, address1: string, phone: string, position: string, suburb: string,
+    async Adduser(passwordtype: string, UserName: string, FirstName: string, LastName: string, email: string, address1: string, phone: string, position: string, suburb: string,
         postcode: string) {
         await this.clickAdminBtn();
         await this.clickusersBtn();
         await this.clickAddBtn();
         await this.clickRadioBtn();
         await this.selectpasswordtype();//(passwordtype);
-        await this.clickcheckbox();
+        // await this.clickcheckbox();
         await this.EnterUserName(UserName);
         await this.EnterFirstName(FirstName);
         await this.EnterLastName(LastName);
@@ -48,14 +51,13 @@ export default class Adminadduser {
         await this.page.click("//label[normalize-space()='Sign in with Username']");
       }
       async selectpasswordtype() {
-        await this.page.locator("#react-select-4-placeholder").click();
-        await this.page.getByText('Standard Password').click();
+        await this.page.getByText('Standard Password', { exact: true }).click();
         await this.page.waitForLoadState('networkidle');
       }
-      async clickcheckbox() {
-        await this.page.click("Enabled");
-        await this.page.waitForLoadState('networkidle');
-      }
+      // async clickcheckbox() {
+      //   await this.page.click("Enabled");
+      //   await this.page.waitForLoadState('networkidle');
+      // }
       async EnterUserName(UserName: string) {
         await this.page.locator("//input[@name='Username']").fill(UserName);
       }
@@ -66,10 +68,10 @@ export default class Adminadduser {
         await this.page.locator("//input[@name='Lastname']").fill(LastName);
       }
       async Enteremail(email: string) {
-        await this.page.getByPlaceholder("//input[@name='Email']").fill(email);
+        await this.page.locator("//input[@name='Email']").fill(email);
       }
       async Enteraddress1(adress1: string) {
-        await this.page.getByPlaceholder("//input[@name='Address1']").fill(adress1);
+        await this.page.locator("//input[@name='Address1']").fill(adress1);
       }
       async Selectcountry() {
         await this.page.click("[data-test-id='UserManagementUserManagementUserDetails34CountryStateDropDownFormGroupCountry'] svg').nth(1)");

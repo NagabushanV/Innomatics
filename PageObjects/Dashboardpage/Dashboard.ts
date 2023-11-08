@@ -1,21 +1,26 @@
-import {Page ,expect} from '@playwright/test';
+import { Locator, Page } from "@playwright/test";
+
+
 export default class DashboardPage {
-    constructor(public page: Page) {
+
+    readonly page: Page;
+    readonly adminLocator: Locator;
+    readonly usersButtonLocator: Locator;
+
+    constructor(page: Page) {
         this.page = page;
-      }
-      async Dashboard () {
-        await this.clickAdminBtn();
-        await this.clickusersBtn();
-      }
-      async clickAdminBtn() {
-        await this.page.click("//p[.='Admin']");
-        await this.page.waitForLoadState('load');
-        
+        //admin
+        this.adminLocator = page.locator("//p[.='Admin']");
+        //users
+        this.usersButtonLocator=page.locator("//span[.='Users']");
     }
-    async clickusersBtn() {
-      await this.page.waitForLoadState('load');
-      await this.page.click("//span[.='Users']");
+    async clickOnAdmin(){
+        await this.page.waitForLoadState("load");
+        await this.adminLocator.click();
     }
 
+    async clickOnUsers(){
+        await this.page.waitForLoadState("load");
+        await this.usersButtonLocator.click();
+    }
 }
-

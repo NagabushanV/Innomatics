@@ -22,8 +22,8 @@ export default defineConfig({
   /* Reporter to use. See https://playwright.dev/docs/test-reporters */
   reporter: 'html',
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
-  
-  timeout: 50*1000,
+  timeout: 100 * 1000,
+  // timeout: 50*1000,
   expect: {
     timeout: 50000
   },
@@ -35,6 +35,8 @@ export default defineConfig({
     // baseURL: 'http://127.0.0.1:3000',
     baseURL: "https://ecommerce-playground.lambdatest.io/index.php?,",
     headless: false,
+    geolocation: { longitude: 12.492507, latitude: 41.889938 },
+    permissions: ['geolocation'],
 
     /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
     trace: 'on-first-retry',

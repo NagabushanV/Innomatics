@@ -1,11 +1,11 @@
 import { test, Page, expect } from "@playwright/test";
-import SigninPage from '../../PageObjects/signin';
-import DashboardPage from '../../PageObjects/Dashboardpage/Dashboard';
-import Adminusers from '../../PageObjects/AdminPages/UsersPage/AdminUserLogin';
-import Adminadduser from '../../PageObjects/AdminPages/Admin-users-Adduser';
-import jsonData from '../../DataBase/signin.json';
-import Dataadd from '../../DataBase/Adduser.json';
-import Adminuserssearch from '../../PageObjects/AdminPages/UsersPage/AdminUserLogin';
+import SigninPage from '../../../PageObjects/signin-page';
+import DashboardPage from '../../../PageObjects/Dashboardpage/dashboard';
+import Adminusers from '../../../PageObjects/AdminPages/UsersPage/AdminUserLogin';
+import Adminadduser from '../../../PageObjects/AdminPages/Admin-users-Adduser';
+
+import Dataadd from '../../../DataBase/Adduser.json';
+import Adminuserssearch from '../../../PageObjects/AdminPages/UsersPage/AdminUserLogin';
 
 
 const UserName = "Nagabushan";
@@ -22,7 +22,7 @@ const postcode = "560016";
 
 
 test("verify that LIU should be able to add new users derails by clicking + icon",async({page})=>{
-    const signin = new SigninPage(page, jsonData);
+    const signin = new SigninPage(page,);
     const Dashboard = new DashboardPage(page);
     const Adduser = new Adminadduser(page);
   
