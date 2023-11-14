@@ -39,7 +39,7 @@ test("Verify that LIU should be able to add new users details by clicking + icon
 })
 
 test("Verify that the LIU should be able to search the newly added user details ", async ({ page }) => {
-    test.setTimeout(100 * 1000);
+    
     const login = new Loginpage(page);
     const dashBoardPage = new DashboardPage(page);
     const adminUserPage = new AdminUsersPage(page, datajson["Test3"].username);

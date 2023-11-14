@@ -125,7 +125,7 @@ export default class AdminUsersPage {
     );
 
     this.randomString = `${Math.random().toString().slice(2, 5)}`;
-    this.expectedUsername = `${user}${this.randomString}${"vtest"}`;
+    this.expectedUsername = `${user}${this.randomString}${"Assoc"}`;
     this.expectedEmail = `${user}${this.randomString}${"@gmail.com"}`;
   }
 
