@@ -10,7 +10,8 @@ export default class DashboardPage {
     readonly StocksLocator: Locator;
     readonly StockSetting: Locator;
     readonly CommsLocator: Locator;
-    readonly commsSettingLocator: Locator;
+    readonly CommsTasksLocator: Locator;
+    readonly CommsSettingLocator: Locator;
     
 
     constructor(page: Page) {
@@ -28,8 +29,11 @@ export default class DashboardPage {
          //comms
          this.CommsLocator = page.locator("//p[.='Comms']");
 
+         //Comms-Tasks
+         this.CommsTasksLocator = page.locator("//span[.='Tasks']"),
+
          //commsSetting
-         this.commsSettingLocator = page.locator("(//span[.='Settings'])[4]");
+         this.CommsSettingLocator = page.locator("(//span[.='Settings'])[4]");
     }
     async clickOnAdmin(){
         await this.page.waitForLoadState("load");
@@ -55,8 +59,14 @@ export default class DashboardPage {
         await this.page.waitForLoadState("load");
         await this.CommsLocator.click();
     }
+
+    //Comms Tasks
+    async ClickOnCommsTaskBtn() {
+        await this.page.waitForLoadState("load");
+        await this.CommsTasksLocator.click();
+    }
     async ClickOnCommsSettingBtn() {
         await this.page.waitForLoadState('load');
-        await this.commsSettingLocator.click();
+        await this.CommsSettingLocator.click();
     }
 }

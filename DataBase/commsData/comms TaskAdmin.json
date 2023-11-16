@@ -2,7 +2,13 @@
     "url": "https://uat-portal.efuelsystems.com",
         "SuperUser": "NagaSuperUser",
         "Password": "DemoPass!CA1",
-        "companyCode": "TESTTEAM"
+        "companyCode": "TESTTEAM",
+        "taskname": "Task5625",
+        "urgency": "Info",
+        "Duetime": "450",
+        "siteName": "MySite",
+        "formoption": "Form27"
+        
         
         
         

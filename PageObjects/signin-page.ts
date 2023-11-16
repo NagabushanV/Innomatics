@@ -21,7 +21,7 @@ export default class Loginpage {
 
     async gotoLoginPage(url:string){
         await this.page.goto(url);
-        this.page.waitForLoadState("domcontentloaded");
+        this.page.waitForLoadState("load");
     }
     async loginToApp(superUser: string, companyName: string, password: string) {
         await this.userNameLocator.fill(superUser);
