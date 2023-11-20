@@ -5,6 +5,7 @@ import DashboardPage from "../../PageObjects/Dashboardpage/dashboard";
 import CommsTaskAdminpage from '../../PageObjects/commsPage/Comms-TaskAdmin-AddTask';
 
 
+
 test("Verify Comms-> TaskAdmin-> should be able to add new taskAdmin details by clicking + icon.",async({page})=>{
     
     const login = new Loginpage(page);
@@ -12,13 +13,16 @@ test("Verify Comms-> TaskAdmin-> should be able to add new taskAdmin details by 
     const CommsTaskAdmin = new CommsTaskAdminpage(page);
     await login.gotoLoginPage(datajson.url);
     await login.loginToApp(datajson.SuperUser, datajson.companyCode,datajson.Password);
+    await login.ClickAcceptBtn();
     
     await dashBoardPage.ClickOnCommsBtn();
     await dashBoardPage.ClickOnCommsTaskBtn();
+    
 
     await CommsTaskAdmin.ClickOnTaskAdminBtn();
     await CommsTaskAdmin.ClickOnAddTaskAdminBtn();
     await CommsTaskAdmin.ClickOnCommsTaskBtn();
+    // await page.pause();
     
     await CommsTaskAdmin.AddTaskName(datajson.taskname);
     // await CommsTaskAdmin.ClickOnUrgencyDropdown(datajson.urgency);
@@ -28,7 +32,8 @@ test("Verify Comms-> TaskAdmin-> should be able to add new taskAdmin details by 
 
     await CommsTaskAdmin.AddDueTime(datajson.Duetime)
 
-    await CommsTaskAdmin.AddDueDate();
+    await CommsTaskAdmin.AddDueDate(datajson.date, datajson.monthYear, datajson.month);
+    // await page.pause();
 
     await CommsTaskAdmin.SelectFormoption(datajson.formoption);
     await page.pause();
@@ -40,6 +45,8 @@ test("Verify Comms-> TaskAdmin-> should be able to add new taskAdmin details by 
     await CommsTaskAdmin.ClickOnNextBtn2();
 
     await CommsTaskAdmin.ClickOnEnableandSaveTask();
+
+    await CommsTaskAdmin.verifySavedTask();
     
-    await page.pause();
+    
 });

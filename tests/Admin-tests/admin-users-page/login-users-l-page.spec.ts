@@ -46,6 +46,7 @@ test("Verify that the LIU should be able to search the newly added user details 
     const adminUserPage = new AdminUsersPage(page, datajson["Test3"].username);
     await login.gotoLoginPage(datajson["Test3"].url);
     await login.loginToApp(datajson["Test3"].SuperUser, datajson["Test3"].companyCode, datajson["Test3"].Password);
+    await login.ClickAcceptBtn();
     await dashBoardPage.clickOnAdmin();
     await dashBoardPage.clickOnUsers();
     await adminUserPage.clickOnAddBtnLandPage();

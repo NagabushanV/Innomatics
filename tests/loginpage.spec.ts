@@ -8,6 +8,7 @@ test.beforeEach(async ({ page }) => {
     await login.gotoLoginPage(data.url);
     await login.loginToApp(data.superUser, 
       data.companyCode, data.password);
+    await login.ClickAcceptBtn();
 
 })
 test("Dashboard",async({page})=>{

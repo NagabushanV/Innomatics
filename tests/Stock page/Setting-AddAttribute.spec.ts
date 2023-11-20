@@ -11,6 +11,7 @@ test ("Stock->Setting->Tank and pump Attribute Add and Verify",async({page})=>{
     const Stocksettingpage = new StocksettingpumpAttributes(page, datajson.sitename);
     await login.gotoLoginPage(datajson.url);
     await login.loginToApp(datajson.SuperUser, datajson.companyCode, datajson.Password);
+    await login.ClickAcceptBtn();
     // await page.pause();
     await dashboardPage.ClickOnStockBtn();
     await dashboardPage.ClickOnSettingBtn();

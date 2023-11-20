@@ -7,6 +7,7 @@ export default class Loginpage {
     readonly rememberMeLocator: Locator;
     readonly loginButtonLocator: Locator;
     readonly forgotPasswordButton: Locator;
+    readonly AcceptCookies: Locator;
 
     constructor(page: Page) {
         this.page = page;
@@ -15,6 +16,7 @@ export default class Loginpage {
         this.passwordLocator = page.locator('//input[@name="password"]');
         this.rememberMeLocator = page.locator("//label[.='Remember me']");
         this.loginButtonLocator = page.locator('#LoginButton');
+        this.AcceptCookies = page.locator("//button[.='Accept All']");
 
 
     }
@@ -30,5 +32,9 @@ export default class Loginpage {
         await this.rememberMeLocator.click();
         await this.loginButtonLocator.click();
         this.page.waitForLoadState("load");
+    }
+    async ClickAcceptBtn() {
+        this.page.waitForLoadState("load");
+        await this.AcceptCookies.click();
     }
 }
