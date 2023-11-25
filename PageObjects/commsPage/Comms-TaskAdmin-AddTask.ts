@@ -20,6 +20,9 @@ export default class CommsTaskAdminpage {
   readonly Monthandyear: Locator;
   readonly dueDateLocator: Locator;
   readonly setDateLocator : Locator;
+  readonly monthLocator : Locator;
+  readonly dateLocator : Locator;
+  readonly Year0fYear : Locator;
 
   readonly Selectform: Locator;
   readonly Selectformclick: Locator;
@@ -49,7 +52,7 @@ constructor(page: Page,) {
 
     this.UrgencyDropdownLocator = page.locator('(//div[@data-test-id="TaskAdminAddEditTaskTaskDetailsTabTaskDetailsFormUrgencyId"]//input)[1]');
     this.UrgencyDropdownValue = page.locator('#react-select-5-input');
-    this.UrgencyExactValue = page.locator('[data-test-id="TaskAdminAddEditTaskTaskDetailsTabTaskDetailsFormUrgencyId"]//input[1]');
+    this.UrgencyExactValue = page.locator('[data-test-id="TaskAdminAddEditTaskTaskDetailsTabTaskDetailsFormUrgencyId"]');
     
    
 
@@ -64,6 +67,9 @@ constructor(page: Page,) {
     this.Monthandyear = page.locator('(//th[@class="rdtSwitch"])[4]');
     this.datenextBtn = page.locator("(//span[.='›'])[4]");
     this.dueDateLocator = page.locator('//div[@data-test-id="TaskAdminAddEditTaskTaskDetailsTabTaskDetailsFormDueDate"]//input');
+    this.monthLocator = page.locator('//td[@class="rdtMonth"]');
+    this.dateLocator = page.locator('(//div[@class="rdtDays"])[4]');
+    this.Year0fYear = page.locator('//td[@class="rdtYear"]');
 
     this.Selectform = page.locator('#react-select-6-input');
     this.Selectformclick = page.locator('(//div[@data-test-id="TaskAdminAddEditTaskTaskDetailsTabTaskDetailsFormExistingFormId"]//input)[1]');
@@ -99,8 +105,8 @@ async AddTaskName(taskname: string) {
 async ClickOnUrgencyDropdown(urgency: string) {
     // await this.page.waitForLoadState('load');
     await this.UrgencyDropdownLocator.fill(urgency);
-    await this.page.locator('//div[contains(text(),"' + urgency + '")]').first().click();
-    // await this.UrgencyExactValue.getByText(urgency, { exact: true }).click();
+    // await this.page.locator('//div[contains(text(),"' + urgency + '")]').first().click();
+    await this.UrgencyExactValue.getByText(urgency, { exact: true }).click();
 
        
 }
@@ -142,24 +148,50 @@ async AddDueDate(date:string,monthYear:string,month:string) {
    }
     }
 }
+async AddDuedate2(date:string,monthYear:string, month:string, year:string){
+    await this.dueDateLocator.click();
+    await this.Monthandyear.click();
 
-// async setDueDate() {
-//     // Get the start date value
-//     const startDateValue = await this.page.$eval('.form-control[placeholder="Start Date"]', (startDateInput: HTMLInputElement) => startDateInput.value);
+    while (true){
+        const YYYY = await this.Monthandyear.textContent();
+        if(YYYY == year)
+        {
+            break;
+        }
+        await this.datenextBtn.click();  
+    }
+    await this.monthLocator.getByText(month, { exact: true }).click();
 
-//     // Calculate the due date by adding 2 days
-//     const startDate = new Date(startDateValue);
-//     const dueDate = new Date(startDate.getTime() + 2 * 24 * 60 * 60 * 1000);
-//     const dueDateFormatted = `${dueDate.getDate()}/${dueDate.getMonth() + 1}/${dueDate.getFullYear()}`;
+    await this.dateLocator.getByText(date, { exact: true }).click();  
+}
 
-//     // Set the calculated due date in the Due Date input
-//     await this.page.fill('.form-control[placeholder="Due Date"]', dueDateFormatted);
-// }
+async AddDuedate3(date:string,monthYear:string, month:string, year:string){
+    await this.dueDateLocator.click();
+    await this.Monthandyear.click();
+    await this.Monthandyear.click();
+
+    while (true){
+        const YYYY = await this.Year0fYear.textContent();
+
+        if(YYYY == year)
+        // await this.Year0fYear.getByText(year, { exact:true }).click();
+        {
+            
+            break;
+        }
+        await this.datenextBtn.click();  
+    }
+    await this.monthLocator.getByText(month, { exact: true }).click();
+
+    await this.dateLocator.getByText(date, { exact: true }).click();  
+}
+
+
 
 async SelectFormoption(formoption: string) {
     await this.Selectformclick.fill(formoption);
-    await this.page.locator('//div[contains(text(),"' + formoption + '")]').first().click();
-    
+    // await this.page.locator('//div[contains(text(),"' + formoption + '")]').first().click();
+    await this.page.getByText(formoption, { exact: true }).click();
      
 }
 

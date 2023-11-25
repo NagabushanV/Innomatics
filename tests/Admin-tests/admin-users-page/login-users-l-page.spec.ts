@@ -12,8 +12,10 @@ test("Verify that LIU should be able to add new users details by clicking + icon
     const adminUserPage=new AdminUsersPage(page,datajson["Test1"].usernamefilter);
     await login.gotoLoginPage(datajson["Test1"].url);
     await login.loginToApp(datajson["Test1"].SuperUser, datajson["Test1"].companyCode,datajson["Test1"].Password);
+    await login.ClickAcceptBtn();
     await dashBoardPage.clickOnAdmin();
     await dashBoardPage.clickOnUsers();
+    await page.pause();
     await adminUserPage.clickOnAddBtnLandPage();
     await adminUserPage.addPasswordType(datajson["Test1"].passwordType);
     await adminUserPage.addFirstName(datajson["Test1"].firstName);
@@ -46,6 +48,7 @@ test("Verify that the LIU should be able to search the newly added user details 
     const adminUserPage = new AdminUsersPage(page, datajson["Test3"].username);
     await login.gotoLoginPage(datajson["Test3"].url);
     await login.loginToApp(datajson["Test3"].SuperUser, datajson["Test3"].companyCode, datajson["Test3"].Password);
+    await page.pause();
     await login.ClickAcceptBtn();
     await dashBoardPage.clickOnAdmin();
     await dashBoardPage.clickOnUsers();
@@ -81,8 +84,10 @@ test("Verify that LIU should be able to delete any user details ", async ({ page
     const adminUserPage = new AdminUsersPage(page, datajson["Test2"].username);
     await login.gotoLoginPage(datajson["Test2"].url);
     await login.loginToApp(datajson["Test2"].SuperUser, datajson["Test2"].companyCode, datajson["Test2"].Password);
+    await login.ClickAcceptBtn();
     await dashBoardPage.clickOnAdmin();
     await dashBoardPage.clickOnUsers();
+    // await page.pause();
     await adminUserPage.clickOnAddBtnLandPage();
     await adminUserPage.addPasswordType(datajson["Test2"].passwordType);
     await adminUserPage.addFirstName(datajson["Test2"].firstName);

@@ -22,6 +22,7 @@ export default class Loginpage {
     }
 
     async gotoLoginPage(url:string){
+        await this.page.waitForLoadState('load');
         await this.page.goto(url);
         this.page.waitForLoadState("load");
     }

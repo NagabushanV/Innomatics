@@ -25,18 +25,18 @@ test("Verify Comms-> TaskAdmin-> should be able to add new taskAdmin details by 
     // await page.pause();
     
     await CommsTaskAdmin.AddTaskName(datajson.taskname);
-    // await CommsTaskAdmin.ClickOnUrgencyDropdown(datajson.urgency);
+    
     // await CommsTaskAdmin.UrgencyDropdownValue();
     await CommsTaskAdmin.ClickOnUrgencyDropdown(datajson.urgency);
     
 
-    await CommsTaskAdmin.AddDueTime(datajson.Duetime)
+    await CommsTaskAdmin.AddDueTime(datajson.Duetime);
 
-    await CommsTaskAdmin.AddDueDate(datajson.date, datajson.monthYear, datajson.month);
+    await CommsTaskAdmin.AddDuedate2(datajson.date, datajson.monthYear, datajson.month, datajson.year);
     // await page.pause();
 
     await CommsTaskAdmin.SelectFormoption(datajson.formoption);
-    await page.pause();
+    // await page.pause();
 
     await CommsTaskAdmin.ClickOnNextBtn1();
 
