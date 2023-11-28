@@ -1,62 +1,42 @@
-import { test, Page, expect } from "@playwright/test";
-import SigninPage from '../../../PageObjects/signin-page';
-import DashboardPage from '../../../PageObjects/Dashboardpage/dashboard';
-// import Adminusers from '../../../PageObjects/AdminPages/UsersPage/AdminUserLogin';
-import Adminadduser from '../../../PageObjects/AdminPages/Admin-users-Adduser';
-
-import Dataadd from '../../../DataBase/Adduser.json';
-// import Adminuserssearch from '../../../PageObjects/AdminPages/UsersPage/AdminUserLogin';
+import { test,expect } from "@playwright/test";
+import Loginpage from "../../../PageObjects/signin-page";
+import datajson from "../../../DataBase/AdminData/AdminUser/admin_userdata.json";
+import DashboardPage from "../../../PageObjects/Dashboardpage/dashboard";
+import AdminUsersPage from "../../../PageObjects/AdminPages/UsersPage/admin-userpage";
 
 
-const UserName = "Nagabushan";
-const FirstName = "Naga";
-const LastName = "Vvv";
-const email = "nagabushanv11@gmail.com"
-const address1 ="Bangalore";
-const phone = "9606695625";
-const position = "Associate";
-const suburb = "Kolar";
-const postcode = "560016";
-
-
-
-
-test("verify that LIU should be able to add new users derails by clicking + icon",async({page})=>{
-    const signin = new SigninPage(page,);
-    const Dashboard = new DashboardPage(page);
-    const Adduser = new Adminadduser(page);
-  
-    await Adduser.clickAdminBtn();
-    await Adduser.clickusersBtn();
-    await Adduser.clickAddBtn();
-    await Adduser.clickRadioBtn();
-    await Adduser.selectpasswordtype();
-    await Adduser.clickcheckbox();
-    await Adduser.EnterUserName(UserName);
-    await Adduser.EnterFirstName(FirstName);
-    await Adduser.EnterLastName(LastName);
-    await Adduser.Enteremail(email);
-    await Adduser.Enteraddress1(address1);
-    await Adduser.Selectcountry();
-    await Adduser.Mobilenumber(phone);
-    await Adduser.Enterposition(position);
-    await Adduser.Entersuburb(suburb);
-    await Adduser.Enterpostcode(postcode);
-    await Adduser.Selectstate();
-    await Adduser.SelectTimezone();
-    await Adduser.Selectuserregion();
-    await Adduser.Selectuserdivision();
-    await Adduser.Selectgender();
-    await Adduser.Selectsecurityrole();
-    await Adduser.clicksaveBtn();
-  })
-
-  
- 
-
-
-
-
-test(" verify that LIU should be able to delete any user details",async({page})=>{
+test("Verify that LIU should be able to add new users details by clicking + icon.",async({page})=>{
+    test.setTimeout(100 * 1000);
+    const login = new Loginpage(page);
+    const dashBoardPage=new DashboardPage(page);
+    const adminUserPage=new AdminUsersPage(page,datajson["Test1"].usernamefilter);
+    await login.gotoLoginPage(datajson["Test1"].url);
+    await login.loginToApp(datajson["Test1"].SuperUser, datajson["Test1"].companyCode,datajson["Test1"].Password);
+    await login.ClickAcceptBtn();
+    await dashBoardPage.clickOnAdmin();
+    await dashBoardPage.clickOnUsers();
+    await page.pause();
+    await adminUserPage.clickOnAddBtnLandPage();
+    await adminUserPage.addPasswordType(datajson["Test1"].passwordType);
+    await adminUserPage.addFirstName(datajson["Test1"].firstName);
+    await adminUserPage.addLastName(datajson["Test1"].lastName);
+    await adminUserPage.addUsername(datajson["Test1"].username);
+    await adminUserPage.addEmailAddess(datajson["Test1"].email);
+    await adminUserPage.addPosition(datajson["Test1"].position);
+    await adminUserPage.addPostcode(datajson["Test1"].postcode);
+    await adminUserPage.addUserRegion(datajson["Test1"].userRegion);
+    await adminUserPage.addUserDivision(datajson["Test1"].userDivision);
+    await adminUserPage.addSecurityRole(datajson["Test1"].securityRole);
+    await adminUserPage.addCountry(datajson["Test1"].country);
+    await adminUserPage.addState(datajson["Test1"].state);
+    await adminUserPage.addTimeZone(datajson["Test1"].timeZone);
+    await adminUserPage.addSuburb(datajson["Test1"].subrub);
+    await adminUserPage.addGender(datajson["Test1"].gender);
+    await adminUserPage.addNickName(datajson["Test1"].nickName);
+    await adminUserPage.addAsset(datajson["Test1"].asset);
+    await adminUserPage.clickOnSaveBtn();
+    await adminUserPage.verifyConfirmationMessage(datajson["Test1"].expectedMessage);
+    await adminUserPage.verifyIfUserCreated();
+   
 
 })

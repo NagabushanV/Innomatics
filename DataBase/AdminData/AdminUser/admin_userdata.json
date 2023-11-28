@@ -24,7 +24,7 @@
         "passwordType": "Standard Password",
         "manager" :"vikramsona123",
         "companyRole" :"SuperUser Role",
-        "expectedMessage": "×User created successfully. An email with password reset URL has been sent to user.",
+        "expectedMessage": "User created successfully. An email with password reset URL has been sent to user.",
         "usernamefilter": "nagabushan",
         "firstNameFilter":"test2"
     },

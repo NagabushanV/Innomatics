@@ -76,7 +76,7 @@ export default class AdminUsersPreferencePage {
   }
 
   async VerifyStartuppageDropdown() {
-     expect(await this.AppearStartuppageLocator).toBeVisible();
+     expect(this.AppearStartuppageLocator).toBeVisible();
     
   }
   async AuthenticationHistorytoBeDisabled() {

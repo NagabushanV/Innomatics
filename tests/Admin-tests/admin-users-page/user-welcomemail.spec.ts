@@ -53,7 +53,7 @@ test("Security Role: Verify that If the LIU selects SuperUser a dropdown for the
     await login.gotoLoginPage(datajson.url);
     await login.loginToApp(datajson.SuperUser, datajson.companyCode,datajson.Password);
     await login.ClickAcceptBtn();
-    await page.pause();
+    // await page.pause();
     await dashBoardPage.clickOnAdmin();
     await dashBoardPage.clickOnUsers();
     await adminUserPage.clickOnAddBtnLandPage();
@@ -82,7 +82,7 @@ test("Security Role: Verify that If the LIU selects User two dropdowns one for M
     await login.gotoLoginPage(datajson.url);
     await login.loginToApp(datajson.SuperUser, datajson.companyCode,datajson.Password);
     await login.ClickAcceptBtn();
-    await page.pause();
+    // await page.pause();
     await dashBoardPage.clickOnAdmin();
     await dashBoardPage.clickOnUsers();
     await adminUserPage.clickOnAddBtnLandPage();
@@ -110,11 +110,11 @@ test("Asset Role: Verify that the Asset Roles can be assigned to a User here.",a
     const login = new Loginpage(page);
     const dashBoardPage=new DashboardPage(page);
     const adminUserPage=new AdminUsersPage(page,datajson.usernamefilter);
-    await page.pause();
+    // await page.pause();
     await login.gotoLoginPage(datajson.url);
     await login.loginToApp(datajson.SuperUser, datajson.companyCode,datajson.Password);
     await login.ClickAcceptBtn();
-    // await page.pause();
+    await page.pause();
     await dashBoardPage.clickOnAdmin();
     await dashBoardPage.clickOnUsers();
     await adminUserPage.clickOnAddBtnLandPage();
@@ -138,6 +138,7 @@ test("Asset Role: Verify that the Asset Roles can be assigned to a User here.",a
 
     await adminUserPage.clickOnSaveBtn();
     await adminUserPage.verifyConfirmationMessage(datajson.expectedMessage);
+    // await page.pause();
     await adminUserPage.verifyAssetRolefilled();   
 
 });

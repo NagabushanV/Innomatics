@@ -2,7 +2,7 @@ import { test, expect, Page } from '@playwright/test';
 import Loginpage from "../../../PageObjects/signin-page";
 import data from "../../../DataBase/AdminData/Preference/Admin-user-Preference.json";
 import datajson from "../../../DataBase/AdminData/AdminUser/admin_userdata.json";
-import AdminUsersAvailabilityPage from '../../../PageObjects/AdminPages/UsersPage/Availability/Admin-user-Availability';
+import AdminUsersAvailabilityPage from '../../../PageObjects/AdminPages/UsersPage/User-Availability/Admin-user-Availability';
 import DashboardPage from '../../../PageObjects/Dashboardpage/dashboard';
 import AdminUsersPage from "../../../PageObjects/AdminPages/UsersPage/admin-userpage";
 
@@ -19,9 +19,9 @@ test("TC02UA:-Verify that all the data entered in the fields should be shown one
     // await page.pause();
     await dashBoardPage.clickOnAdmin();
     await dashBoardPage.clickOnUsers();
-    await page.pause(); 
-    await adminUserPage.clickOnAddBtnLandPage
-    await page.waitForTimeout(4000);
+    // await page.pause(); 
+    await adminUserPage.clickOnAddBtnLandPage();
+    await page.waitForLoadState('load');
     await adminUserPage.ClickonCancelBtn();  
     await adminUserPage.ClickOnAvailabilityBtn();
     

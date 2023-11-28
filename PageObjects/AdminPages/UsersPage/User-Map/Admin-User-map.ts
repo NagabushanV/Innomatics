@@ -13,6 +13,7 @@ export default class AdminUsersMapPage {
     this.setUsernameDropdownLocator = page.locator('//div[@data-test-id="UserManagementUserName"]// input');
     this.ZoomoutButtonLocator = page.locator('//button[@title="Zoom out"]');
     this.ClickAlertOkButtonLocator=page.locator('//a[@class="btn btn-sm btn-primary  "]');
+    //a[.='Ok']
   }   //div[@data-test-id="UserManagementUserName"]// input
 
   async clickOnMapBtn() {

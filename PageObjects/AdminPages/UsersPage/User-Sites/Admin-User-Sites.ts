@@ -6,6 +6,9 @@ export default class AdminUserSitesPage {
   readonly checkBoxtwoLocator: Locator;
   readonly UnassignedLeftArrowLocator: Locator;
   readonly AlertMessageLocator: Locator;
+  
+  readonly UnAssignExportButtonLocator: Locator;
+  readonly UnAssignExportAllDataLocator: Locator;
 
   constructor(page: Page) {
     this.page = page;
@@ -15,6 +18,9 @@ export default class AdminUserSitesPage {
     this.checkBoxtwoLocator = page.locator('(//td[@data-test-id="UserManagementUserManagementSites37CompanyUserSitesGridSelectionCellSelectionCell"])[2]');
     this.UnassignedLeftArrowLocator = page.locator('//button[@data-test-id="UserManagementUserManagementSites37Left"]');
     this.AlertMessageLocator = page.locator('//div[@data-test-id="NotificationMessage"]');
+
+    this.UnAssignExportButtonLocator=page.locator('//button[@data-test-id="UserManagementUserManagementSites37CompanyUserSitesGridExport"]');
+    this.UnAssignExportAllDataLocator = page.locator('(//div[@data-test-id="UserManagementUserManagementSites37CompanyUserSitesGridExport"])[1]');
   }
 
  async ClickoncheckBoxes() {
@@ -35,4 +41,16 @@ export default class AdminUserSitesPage {
     await expect(this.AlertMessageLocator).toBeVisible();
     await expect(this.AlertMessageLocator).toHaveText('Sites successfully unassigned from user');
  }
+
+ //Export:
+ async ClickOnUnAssignExportBtn() {
+   await this.UnAssignExportButtonLocator.click();
+ }
+ async ClickOnUnAssignExportAlldataBtn() {
+   await this.page.waitForLoadState('load');
+   await this.UnAssignExportAllDataLocator.click();
+   const csvContent = await this.page.innerText('text=xyz.csv');
+   // expect(csvContent).toContain('') 
+ }
+
 }

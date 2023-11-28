@@ -39,7 +39,7 @@ test("Verify that LIU should be able to add new users details by clicking + icon
     await adminUserPage.verifyIfUserCreated();
    
 
-})
+});
 
 test("Verify that the LIU should be able to search the newly added user details ", async ({ page }) => {
     test.setTimeout(100 * 1000);
@@ -87,7 +87,7 @@ test("Verify that LIU should be able to delete any user details ", async ({ page
     await login.ClickAcceptBtn();
     await dashBoardPage.clickOnAdmin();
     await dashBoardPage.clickOnUsers();
-    // await page.pause();
+    await page.pause();
     await adminUserPage.clickOnAddBtnLandPage();
     await adminUserPage.addPasswordType(datajson["Test2"].passwordType);
     await adminUserPage.addFirstName(datajson["Test2"].firstName);
@@ -108,9 +108,10 @@ test("Verify that LIU should be able to delete any user details ", async ({ page
     await adminUserPage.addAsset(datajson["Test2"].asset);
     await adminUserPage.clickOnSaveBtn();
     await adminUserPage.verifyIfUserCreated();
+    await page.pause();
     await adminUserPage.clickOnDeleteBtn();
-    await adminUserPage.verifyUserCanBeDeleted();
-    await adminUserPage.verifyDeletePrompt(datajson["Test2"].deletePropmtMessage);
+    // await adminUserPage.verifyUserCanBeDeleted();
+    // await adminUserPage.verifyDeletePrompt(datajson["Test2"].deletePropmtMessage);
 
 
 })

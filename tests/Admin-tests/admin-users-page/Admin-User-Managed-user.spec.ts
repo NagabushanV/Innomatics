@@ -2,7 +2,7 @@ import { test,expect } from "@playwright/test";
 import Loginpage from "../../../PageObjects/signin-page";
 import datajson from "../../../DataBase/AdminData/AdminUser/admin_userdata.json";
 import data from "../../../DataBase/AdminData/Preference/Admin-user-Preference.json";
-import AdminUserManagedUserPage from "../../../PageObjects/AdminPages/UsersPage/Managed-User/Admin-User-managed-user";
+import AdminUserManagedUserPage from "../../../PageObjects/AdminPages/UsersPage/User-Managed-User/Admin-User-managed-user";
 import DashboardPage from "../../../PageObjects/Dashboardpage/dashboard";
 import AdminUsersPage from "../../../PageObjects/AdminPages/UsersPage/admin-userpage";
 
@@ -23,10 +23,9 @@ test("TC-UMU01-Verify that this tab would be visible to all users but only enabl
     await adminUserPage.ClickonCancelBtn();
 
     await adminUserPage.VerifyManagedUserTab();
-
     await adminUserPage.SetUsernameMUDropdown(data['Test4'].username);
     await adminUserPage.VerifyManagedUserTab();
-
+    // await page.pause();
     await adminUserPage.SetUsernameMUDropdown1(data['Test4'].UserName);
     await adminUserPage.VerifyManagedUserTab1(); 
 

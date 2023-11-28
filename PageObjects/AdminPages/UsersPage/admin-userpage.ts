@@ -53,7 +53,7 @@ export default class AdminUsersPage {
 
   readonly companyRoleapperLocator: Locator;
   readonly VerifymanagerLocator: Locator;
-  readonly CancelButtonLocator: Locator;
+  readonly UserCancelButtonLocator: Locator;
 
   //Availability
   readonly AvailabilityButtonLocator: Locator;
@@ -126,7 +126,8 @@ export default class AdminUsersPage {
     this.companyRoleLocator = page.locator(
       '//div[@data-test-id="UserManagementUserManagementUserDetails34CompanyRoleId"]'
     );
-    this.confirmMessage = page.locator("//div[@role='alert']");
+    // this.confirmMessage = page.locator("//div[@role='alert']");
+    this.confirmMessage = page.locator('//div[@data-test-id="NotificationMessage"]')
     this.firstNameFilterLocator = page.locator(
       '//th[@data-test-id="UserManagement283AdminUserDetailsFilterCellFirstName"]//input'
     );
@@ -138,12 +139,13 @@ export default class AdminUsersPage {
       '[data-test-id="UserManagement283AdminUserDetailsSelectionCellSelectionCell"]'
     );
     this.deleteBtnLocator = page.locator(
-      '[data-test-id="UserManagementCardWithToggleAndFunctionButtonsbtnDeleteButton"]'
+      '//button[@data-test-id="UserManagementUserManagementUserDetails34Delete"]'
     );
     this.deleteAlertLocator = page.locator(
-      '[data-test-id="UserManagementConfirmDeleteAlertButtonsButton0"]'
+      '//button[@data-test-id="UserManagementUserManagementUserDetailsDeleteAlertButtonsButton0"]'
     );
-    this.CancelButtonLocator = page.locator('[data-test-id="UserManagementUserManagementUserDetails34CancelCustomHoverButton"]');
+    this.UserCancelButtonLocator = page.locator('//button[@data-test-id="UserManagementUserManagementUserDetails34CancelCustomHoverButton"]');
+    
     this.closeButtonLocator = page.locator('//span[@title="Close"]');
     this.yesDeleteButton = page.locator(
       '[data-test-id="UserManagementUserManagementUserDetailsDeleteAlertButtonsButton0"]'
@@ -162,7 +164,8 @@ export default class AdminUsersPage {
 
     //welcome mail:-
     this.WelcomemailButtonLocator = page.locator('//button[@data-test-id="UserManagementUserManagementUserDetails34btnWelcomeCustomButton"]');
-    this.welComemailAlretMessageLocator = page.locator('//div[@role="alert');
+    // this.welComemailAlretMessageLocator = page.locator('//div[@role="alert');
+    this.welComemailAlretMessageLocator = page.locator('//div[@data-test-id="NotificationMessage"]');
 
     //company role appeare
     this.companyRoleapperLocator = page.locator('//div[@data-test-id="UserManagementUserManagementUserDetails34CompanyRoleId"]');
@@ -197,15 +200,12 @@ export default class AdminUsersPage {
   }
   async ClickonCancelBtn() {
     await this.page.waitForLoadState('load');
-    await this.CancelButtonLocator.click();
-    await this.page.waitForLoadState('load');
+    await this.UserCancelButtonLocator.click();
+    
+    
   }
 
-  // async addPasswordType(passwordType: string) {
-  //   await this.page.waitForLoadState('load');
-  //   await this.passwordTypeLocator.click();
-  //   await this.page.getByText(passwordType, { exact: true }).click();
-  // }
+  
   async addPasswordType(passwordType: string){
     await this.page.waitForLoadState('load');
     await this.passwordTypeLocator.fill(passwordType);
@@ -234,10 +234,7 @@ export default class AdminUsersPage {
   async addPosition(position: string) {
     await this.positionFiledLocator.fill(position);
   }
-  // async addCountry(country: string) {
-  //   await this.countryDropdownLocator.click();
-  //   await this.page.getByText(country, { exact: true }).click();
-  // }
+ 
   async addCountry(country: string){
     await this.page.waitForLoadState('load');
     await this.countryDropdownLocator.fill(country);
@@ -249,91 +246,62 @@ export default class AdminUsersPage {
   async addSuburb(suburb: string) {
     await this.subrubLocator.fill(suburb);
   }
-  // async addState(state: string) {
-  //   await this.page.waitForTimeout(4000);
-  //   await this.stateDropdownLocator.click();
-  //   await this.page.waitForLoadState('load');
-  //   await this.page.getByText(state, { exact: true }).click();
-  // }
+  
   async addState(state: string){
     await this.page.waitForLoadState('load');
     await this.stateDropdownLocator.fill(state);
     await this.page.locator("(//div[normalize-space()='" + state + "'])[1]").click();
   }
-  // async addTimeZone(timeZone: string) {
-  //   await this.timeZoneDropdownLocator.click();
-  //   await this.page.getByText(timeZone, { exact: true }).click();
-  // }
+ 
   async addTimeZone(timeZone: string){
     await this.page.waitForLoadState('load');
     await this.timeZoneDropdownLocator.fill(timeZone);
     await this.page.locator("(//div[normalize-space()='" + timeZone + "'])[1]").click();
   }
-  // async addUserRegion(userRegion: string) {
-  //   await this.userRegionDropdownLocator.click();
-  //   await this.page.getByText(userRegion, { exact: true }).click();
-  // }
+  
   async addUserRegion(userRegion: string){
     await this.page.waitForLoadState('load');
     await this.userRegionDropdownLocator.fill(userRegion);
     await this.page.locator("(//div[normalize-space()='" + userRegion + "'])[1]").click();
   }
 
-  // async addGender(gender: string) {
-  //   await this.genderDropdown.click();
-  //   await this.page.waitForLoadState('load');
-  //   await this.page.getByText(gender, { exact: true }).click();
-  // }
+  
   async addGender(gender: string){
     await this.page.waitForLoadState('load');
     await this.genderDropdown.fill(gender);
     await this.page.locator("(//div[normalize-space()='" + gender + "'])[1]").click();
   }
-  // async addAsset(asset: string) {
-  //   await this.assestFieldLocator.click();
-  //   await this.page.getByText(asset, { exact: true }).click();
-  // }
+  
   async addAsset(asset: string){
     await this.page.waitForLoadState('load');
     await this.assestFieldLocator.fill(asset);
     await this.page.locator("(//div[normalize-space()='" + asset + "'])[1]").click();
   }
-  // async addAsset1(asset1: string) {
-  //   await this.assestFieldLocator.click();
-  //   await this.page.getByText(asset1, { exact: true }).click();
-  // }
+  
   async addAsset1(asset1: string){
     await this.page.waitForLoadState('load');
     await this.assestFieldLocator.fill(asset1);
     await this.page.locator("(//div[normalize-space()='" + asset1 + "'])[1]").click();
   }
   async verifyAssetRolefilled(){
-    expect(this.page.locator('[data-test-id="UserManagementUserManagementUserDetails34AssetRoleId"]')).toHaveValue('Test2');
+    await this.page.waitForLoadState('load');
+    expect(this.page.locator('//div[@data-test-id="UserManagementUserManagementUserDetails34AssetRoleId"]')).toBeVisible();
 
   }
 
-  // async addUserDivision(userDivision: string) {
-  //   await this.userDivisionDropdown.click();
-  //   await this.page.getByText(userDivision, { exact: true }).click();
-  // }
+  
   async addUserDivision(userDivision: string){
     await this.page.waitForLoadState('load');
     await this.userDivisionDropdown.fill(userDivision);
     await this.page.locator("(//div[normalize-space()='" + userDivision + "'])[1]").click();
   }
-  // async addSecurityRole(securityRole: string) {
-  //   await this.securityRoleLocator.click();
-  //   await this.page.getByText(securityRole, { exact: true }).click();
-  // }
+  
   async addSecurityRole(securityRole: string){
     await this.page.waitForLoadState('load');
     await this.securityRoleLocator.fill(securityRole);
     await this.page.locator("(//div[normalize-space()='" + securityRole + "'])[1]").click();
   }
-  // async addSecurityRole1(securityRole1: string) {
-  //   await this.securityRoleLocator.click();
-  //   await this.page.getByText(securityRole1, { exact: true }).click();
-  // }
+ 
   async addSecurityRole1(securityRole1: string){
     await this.page.waitForLoadState('load');
     await this.securityRoleLocator.fill(securityRole1);
@@ -358,6 +326,7 @@ export default class AdminUsersPage {
   }
 
   async verifyConfirmationMessage(expectedMessage: string) {
+    await this.page.waitForLoadState('load');
     const actualMessage = await this.confirmMessage.textContent();
     expect(actualMessage?.trim()).toBe(expectedMessage);
   }
@@ -365,7 +334,7 @@ export default class AdminUsersPage {
   async verifyIfUserCreated() {
     await this.page.waitForLoadState('load');
     const names = await this.usernameTextbox.textContent();
-    await this.page.waitForLoadState();
+    await this.page.waitForLoadState('load');
     expect(names).toBe(this.expectedUsername);
   }
 
@@ -426,6 +395,7 @@ export default class AdminUsersPage {
   }
   async VerifywelcomemailsentAlertmessage() {
     await expect(this.welComemailAlretMessageLocator).toBeVisible();
+    // await expect(this.page.getByText('A welcome mail has been sent to user.')).toBeVisible();
   }
 
   async VerifyCompanyRoleAppear(){

@@ -7,11 +7,13 @@ export default class DashboardPage {
     readonly page: Page;
     readonly adminLocator: Locator;
     readonly usersButtonLocator: Locator;
+    readonly SitesButtonLocator: Locator;
     readonly StocksLocator: Locator;
     readonly StockSetting: Locator;
     readonly CommsLocator: Locator;
     readonly CommsTasksLocator: Locator;
     readonly CommsSettingLocator: Locator;
+
     
 
     constructor(page: Page) {
@@ -20,6 +22,7 @@ export default class DashboardPage {
         this.adminLocator = page.locator("//p[.='Admin']");
         //users
         this.usersButtonLocator=page.locator("//span[.='Users']");
+        this.SitesButtonLocator=page.locator("//span[.='Sites']");
 
          //stock
          this.StocksLocator = page.locator("//p[.='Stock']");
@@ -43,6 +46,10 @@ export default class DashboardPage {
     async clickOnUsers(){
         await this.page.waitForLoadState("load");
         await this.usersButtonLocator.click();
+    }
+    async ClickOnSitesBtn() {
+        await this.page.waitForLoadState('load');
+        await this.SitesButtonLocator.click();
     }
 
     // stock
