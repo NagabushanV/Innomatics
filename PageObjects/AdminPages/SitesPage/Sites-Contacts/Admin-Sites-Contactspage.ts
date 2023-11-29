@@ -84,7 +84,8 @@ export default class AdminSitesPage {
     this.ClickAddAdditionalSiteContactLocatotr=page.locator('[data-test-id="SiteConfigurationSiteContacts305Add"]');
     this.SetLabelContactLocator=page.locator('//div[@data-test-id="SiteConfigurationSiteContacts305AddSiteContactTypeName"]// input');
     this.ClickSaveButtonContactLabelLocator=page.locator('[data-test-id="SiteConfigurationSiteContacts305AddSiteContactTypeSave"]');
-    this.VerifyAdditionalSiteContactLabelVisible = page.locator('//button[@title="TestAssoc"]');
+    this.VerifyAdditionalSiteContactLabelVisible = page.locator("//button[.='TestAssoc']");
+
   }
 
   async SetSiteNameDropdown(Sitename: string) {
@@ -239,9 +240,19 @@ export default class AdminSitesPage {
       await this.page.waitForLoadState('load');
       await this.ClickSaveButtonContactLabelLocator.click();
     }
-    async VerifyContactLabalinAdditionalContact() {
+    async VerifyContactLabalinAdditionalContact(){
       expect(this.VerifyAdditionalSiteContactLabelVisible).toBeVisible();
-    } 
+    }
+    // async VerifyContactLabalinAdditionalContact(contact: string) {
+    //   const labelContact = await this.page.$$(this.VerifyAdditionalSiteContactLabelVisible);
+    //   for (const element of labelContact){
+    //     if (contact === await element.textContent()) {
+    //       await expect(contact).toBeTruthy();
+    //       break;
+    //     }
+      // }
+      
+    // } 
   
   
 

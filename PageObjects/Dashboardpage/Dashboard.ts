@@ -14,6 +14,9 @@ export default class DashboardPage {
     readonly CommsTasksLocator: Locator;
     readonly CommsSettingLocator: Locator;
 
+    readonly DriveOFFLocator: Locator;
+    readonly DriveoffLocator: Locator;
+
     
 
     constructor(page: Page) {
@@ -37,6 +40,10 @@ export default class DashboardPage {
 
          //commsSetting
          this.CommsSettingLocator = page.locator("(//span[.='Settings'])[4]");
+
+         //Drive OFF
+         this.DriveOFFLocator = page.locator("//p[.='Drive Off']");
+         this.DriveoffLocator = page.locator("(//span[.='Drive Off'])[1]")
     }
     async clickOnAdmin(){
         await this.page.waitForLoadState("load");
@@ -75,5 +82,15 @@ export default class DashboardPage {
     async ClickOnCommsSettingBtn() {
         await this.page.waitForLoadState('load');
         await this.CommsSettingLocator.click();
+    }
+    //Drive oFF
+    async ClickOnDriveOFFBtn() {
+        await this.page.waitForLoadState('load');
+        await this.DriveOFFLocator.click();
+    }
+    async ClickOnDriveoffBtn() {
+        await this.page.waitForLoadState('load');
+        await this.DriveoffLocator.click();
+
     }
 }

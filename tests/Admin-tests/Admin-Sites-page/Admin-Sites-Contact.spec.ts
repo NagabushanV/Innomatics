@@ -291,11 +291,11 @@ test("Verify that LIU should be able to check and uncheck the Manifest checkbox"
 
     await adminSitesContactsPage.ClickOnmanifastCheckBox();
     await adminSitesContactsPage.ClickOnSaveBtn();
-    // await adminSitesContactsPage.VerifymanifastCheckBox();
+    await adminSitesContactsPage.VerifymanifastCheckBox();
     await adminSitesContactsPage.ClickOnEditBtn();
     await adminSitesContactsPage.ClickOnmanifastCheckBoxUnChecked();
     await adminSitesContactsPage.ClickOnSaveBtn();
-    // await adminSitesContactsPage.VerifymanifastCheckBoxUnChecked();
+    await adminSitesContactsPage.VerifymanifastCheckBoxUnChecked();
     
 });
 
@@ -321,6 +321,6 @@ test("Additional Site Contacts  Verify that from the Company Settings Company Li
     await adminSitesContactsPage.ClickOnAddAdditionalContactBtn();
     await adminSitesContactsPage.SetContactLabel(data['Test2'].contact);
     await adminSitesContactsPage.ClickOnSaveContactLabelBtn();
-    // await adminSitesContactsPage.VerifyContactLabalinAdditionalContact();
+    await adminSitesContactsPage.VerifyContactLabalinAdditionalContact();
     
 });

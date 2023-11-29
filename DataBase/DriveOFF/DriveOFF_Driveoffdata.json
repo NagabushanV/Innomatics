@@ -1,0 +1,30 @@
+{
+    "Test1": {
+        "url": "https://uat-portal.efuelsystems.com",
+        "SuperUser": "NagaSuperUser",
+        "Password": "DemoPass!CA1",
+        "companyCode": "TESTTEAM",
+        "Rego": "xyz",
+        "Arrivaltime": "1234",
+        "Driveofftime": "1356",
+        "Fuelquantity": "2",
+        "FuelAmount": "30",
+        "ReferenceNo": "5625",
+        "Product": "LPG",
+        "pumpno": "2",
+        "site": "MySite",
+        "Failtopaytype": "Fail to Pay",
+        "driveoffstatus": "Reported",
+        "chassis": "Bus",
+        "make": "Ford",
+        "model": "HMMWV",
+        "color": "Blue",
+        "plates": "Am sure they matched",
+        "expectedMessage": "Record has been saved successfully",
+        "year": "2023",
+        "expectedRequiredText": "PumpNo is a required field"
+
+
+       
+    }
+}
