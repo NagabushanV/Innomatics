@@ -81,6 +81,15 @@ export default class AdminSitesPage {
   readonly VerifytheCreatedlinktabLocator: Locator;
   SmsRadioButtonLocator: Locator;
   SetmobilenumberLocator: Locator;
+  ClickwitnessesExpandButtonLocator: Locator;
+  verifyShrinkButtonLocator: Locator;
+  verifydriveofflandpageLocator: Locator;
+  ClickExportButtonLocator: Locator;
+  clickExportAllDataLocator: Locator;
+  ClickcheckboxLocator: Locator;
+  ClickExportSelectedRowLocator: Locator;
+  ClickViewButtonLocator: Locator;
+  verifyviewlandingpageLocator: Locator;
   
 
   constructor(page: Page,) {
@@ -113,6 +122,13 @@ export default class AdminSitesPage {
     this.ClickEditButtonLocator = page.locator('[data-test-id="DriveOffIncidentVehicleIncidentVehicleFormEdit"]');
     this.setVehiclyearLocator = page.locator('[name="VehicleYear"]');
     this.verifyrequiredfield = page.locator('[class="invalid-feedback"]');
+    this.verifydriveofflandpageLocator=page.locator('[data-test-id="DriveOff11309"]');
+    this.ClickExportButtonLocator=page.locator('[title="Export"]');
+    this.clickExportAllDataLocator=page.locator("//button[.='Export all data']");
+    this.ClickcheckboxLocator=page.locator('(//td[@data-test-id="DriveOffHome290DriveOffReportsHomeSelectionCellSelectionCell"])[1]');
+    this.ClickExportSelectedRowLocator=page.locator("//button[.='Export selected rows']");
+    this.ClickViewButtonLocator=page.locator('(//button[@title="View"])[1]');
+    this.verifyviewlandingpageLocator=page.locator('data-test-id="DriveOffIncidentVehicleIncidentVehicleFormCardBody"');
 
     //suspects
     this.SuspectsButtonLocator=page.locator('[data-test-id="DriveOff11310"]');
@@ -138,6 +154,8 @@ export default class AdminSitesPage {
     this.ClickwitnessesDeleteLocator=page.locator('[data-test-id="DriveOffWitnessesWitnessesFormDelete"]');
     this.ClickDeleteConfirmYesLocator=page.locator("//a[.='Yes']");
     this.ClickwitnessesCancelButtonLocator=page.locator('[data-test-id="DriveOffWitnessesWitnessesFormCancelCustomHoverButton"]');
+    this.ClickwitnessesExpandButtonLocator=page.locator('[data-test-id="DriveOffWitnessesWitnessesFormExpand"]');
+    this.verifyShrinkButtonLocator=page.locator('[title="Shrink"]');
     //Photo/video
     this.PhotoandVideoFileButtonLocator=page.locator('[data-test-id="DriveOff11312"]');
     this.uploadReceiptLocator=page.locator('[name="btnUploadReceipts"]');
@@ -169,8 +187,14 @@ export default class AdminSitesPage {
     this.VerifytheCreatedlinktabLocator=page.locator("//h2[.='Payment Request']");
     this.SmsRadioButtonLocator= page.locator('(//div[@data-test-id="DriveOffDriveOffStatusDriveOffPaymentRequestPayReqDriveOffFormSendBy"])[2]');
     this.SetmobilenumberLocator=page.locator('[placeholder="Mobile Number"]');
+    
 }
 
+
+async verifyDriveofflandpage(){
+  await this.page.waitForLoadState('load');
+  expect (this.verifydriveofflandpageLocator).toBeEnabled();
+}
 async ClickOnAddBtn() {
     await this.page.waitForLoadState('load'); 
     await this.ClickAddButtonVDLocator.click();
@@ -282,6 +306,31 @@ async ClickOnAddBtn() {
     expect(this.PhotoandVideoFileButtonLocator).toBeEnabled();
     expect(this.statusButtonLocator).toBeEnabled();
   }
+  async ClickOnExportBtn() {
+    await this.page.waitForLoadState('load');
+    await this.ClickExportButtonLocator.click();
+  }
+  async ClickOnExportAllDataBtn() {
+    await this.page.waitForLoadState('load');
+    await this.clickExportAllDataLocator.click();
+  }
+  async ClickOncheckBoxRow() {
+    await this.page.waitForLoadState('load');
+    await this.ClickcheckboxLocator.click();
+  }
+  async ClickOnExportedSelectRows() {
+    await this.page.waitForLoadState('load');
+    await this.ClickExportSelectedRowLocator.click();
+  }
+  async ClickOnViewBtn() {
+    await this.page.waitForLoadState('load');
+    await this.ClickViewButtonLocator.click();
+  }
+  async verifyviewlanfpage() {
+    await this.page.waitForLoadState('load');
+    expect (this.verifyviewlandingpageLocator).toBeTruthy();
+  }
+
 
   //Suspects
   async ClickOnSuspectsBtn(){
@@ -380,6 +429,14 @@ async SetApproxAge(age: string) {
   async ClickOnwitnessessCancelBtn(){
     await this.page.waitForLoadState('load');
     await this.ClickwitnessesCancelButtonLocator.click();
+  }
+  async ClickOnwitnessessExpandBtn(){
+    await this.page.waitForLoadState('load');
+    await this.ClickwitnessesExpandButtonLocator.click();
+  }
+  async verifyStrinkBtn(){
+    await this.page.waitForLoadState('load');
+    expect(this.verifyShrinkButtonLocator).toBeTruthy();
   }
 
   //Photo and videoFile

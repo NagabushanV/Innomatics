@@ -16,6 +16,8 @@ export default class DashboardPage {
 
     readonly DriveOFFLocator: Locator;
     readonly DriveoffLocator: Locator;
+    DriveOFFReportsLocator: Locator;
+    DriveOFFSettingLocator: Locator;
 
     
 
@@ -43,7 +45,9 @@ export default class DashboardPage {
 
          //Drive OFF
          this.DriveOFFLocator = page.locator("//p[.='Drive Off']");
-         this.DriveoffLocator = page.locator("(//span[.='Drive Off'])[1]")
+         this.DriveoffLocator = page.locator("(//span[.='Drive Off'])[1]");
+         this.DriveOFFReportsLocator = page.locator("(//span[.='Reports'])[4]");
+         this.DriveOFFSettingLocator= page.locator("(//span[.='Settings'])[5]");
     }
     async clickOnAdmin(){
         await this.page.waitForLoadState("load");
@@ -90,7 +94,14 @@ export default class DashboardPage {
     }
     async ClickOnDriveoffBtn() {
         await this.page.waitForLoadState('load');
-        await this.DriveoffLocator.click();
-
+        await this.DriveoffLocator.click()
+    }
+    async ClickOnReportsBtn() {
+        await this.page.waitForLoadState('load');
+        await this.DriveOFFReportsLocator.click();
+    }
+    async ClickOnDriveoffSettingBtn() {
+        await this.page.waitForLoadState('load');
+        await this.DriveOFFSettingLocator.click();
     }
 }
