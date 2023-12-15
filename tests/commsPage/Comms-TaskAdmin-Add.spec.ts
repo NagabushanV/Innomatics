@@ -25,7 +25,7 @@ test("Verify Comms-> TaskAdmin-> should be able to add new taskAdmin details by 
     // await page.pause();
     
     await CommsTaskAdmin.AddTaskName(datajson.taskname);
-    
+    await page.pause();
     // await CommsTaskAdmin.UrgencyDropdownValue();
     await CommsTaskAdmin.ClickOnUrgencyDropdown(datajson.urgency);
     

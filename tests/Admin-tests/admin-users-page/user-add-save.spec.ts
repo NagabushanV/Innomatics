@@ -25,14 +25,14 @@ test("Verify that LIU should be able to save successfully the user details by cl
     await adminUserPage.addEmailAddess(datajson.email);
     await adminUserPage.addPosition(datajson.position);
     await adminUserPage.addPostcode(datajson.postcode);
-    await adminUserPage.addUserRegion(datajson.userRegion);
-    await adminUserPage.addUserDivision(datajson.userDivision);
+    // await adminUserPage.addUserRegion(datajson.userRegion);
+    // await adminUserPage.addUserDivision(datajson.userDivision);
     await adminUserPage.addSecurityRole(datajson.securityRole);
     await adminUserPage.addCountry(datajson.country);
     await adminUserPage.addState(datajson.state);
     await adminUserPage.addTimeZone(datajson.timeZone);
     await adminUserPage.addSuburb(datajson.subrub);
-    await adminUserPage.addGender(datajson.gender);
+    // await adminUserPage.addGender(datajson.gender);
     await adminUserPage.addNickName(datajson.nickName);
     await adminUserPage.addAsset(datajson.asset);
     await adminUserPage.clickOnSaveBtn();

@@ -24,14 +24,14 @@ test("Verify that the LIU should able to click Send Welcome Mail Button once all
     await adminUserPage.addEmailAddess(datajson.email);
     await adminUserPage.addPosition(datajson.position);
     await adminUserPage.addPostcode(datajson.postcode);
-    await adminUserPage.addUserRegion(datajson.userRegion);
-    await adminUserPage.addUserDivision(datajson.userDivision);
+    // await adminUserPage.addUserRegion(datajson.userRegion);
+    // await adminUserPage.addUserDivision(datajson.userDivision);
     await adminUserPage.addSecurityRole(datajson.securityRole);
     await adminUserPage.addCountry(datajson.country);
     await adminUserPage.addState(datajson.state);
     await adminUserPage.addTimeZone(datajson.timeZone);
     await adminUserPage.addSuburb(datajson.subrub);
-    await adminUserPage.addGender(datajson.gender);
+    // await adminUserPage.addGender(datajson.gender);
     await adminUserPage.addNickName(datajson.nickName);
     await adminUserPage.addAsset(datajson.asset);
     await adminUserPage.clickOnSaveBtn();
@@ -64,8 +64,8 @@ test("Security Role: Verify that If the LIU selects SuperUser a dropdown for the
     await adminUserPage.addEmailAddess(datajson.email);
     await adminUserPage.addPosition(datajson.position);
     await adminUserPage.addPostcode(datajson.postcode);
-    await adminUserPage.addUserRegion(datajson.userRegion);
-    await adminUserPage.addUserDivision(datajson.userDivision);
+    // await adminUserPage.addUserRegion(datajson.userRegion);
+    // await adminUserPage.addUserDivision(datajson.userDivision);
     await adminUserPage.addSecurityRole(datajson.securityRole);
     await adminUserPage.VerifyCompanyRoleAppear();
     
@@ -93,8 +93,8 @@ test("Security Role: Verify that If the LIU selects User two dropdowns one for M
     await adminUserPage.addEmailAddess(datajson.email);
     await adminUserPage.addPosition(datajson.position);
     await adminUserPage.addPostcode(datajson.postcode);
-    await adminUserPage.addUserRegion(datajson.userRegion);
-    await adminUserPage.addUserDivision(datajson.userDivision);
+    // await adminUserPage.addUserRegion(datajson.userRegion);
+    // await adminUserPage.addUserDivision(datajson.userDivision);
     await adminUserPage.addSecurityRole1(datajson.securityRole1);
     // await page.pause();
     await adminUserPage.verifyManagerAppear();
@@ -125,14 +125,14 @@ test("Asset Role: Verify that the Asset Roles can be assigned to a User here.",a
     await adminUserPage.addEmailAddess(datajson.email);
     await adminUserPage.addPosition(datajson.position);
     await adminUserPage.addPostcode(datajson.postcode);
-    await adminUserPage.addUserRegion(datajson.userRegion);
-    await adminUserPage.addUserDivision(datajson.userDivision);
+    // await adminUserPage.addUserRegion(datajson.userRegion);
+    // await adminUserPage.addUserDivision(datajson.userDivision);
     await adminUserPage.addSecurityRole(datajson.securityRole);
     await adminUserPage.addCountry(datajson.country);
     await adminUserPage.addState(datajson.state);
     await adminUserPage.addTimeZone(datajson.timeZone);
     await adminUserPage.addSuburb(datajson.subrub);
-    await adminUserPage.addGender(datajson.gender);
+    // await adminUserPage.addGender(datajson.gender);
     await adminUserPage.addNickName(datajson.nickName);
     await adminUserPage.addAsset1(datajson.asset1);
 

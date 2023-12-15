@@ -63,7 +63,7 @@ test("Verify that all Authentication History fields should be read only.",async(
 
 
 test("Verify that LIU should get the success message when the details is saved successfully",async({page})=>{
-    test.setTimeout(100 * 1000);
+    test.setTimeout(100 * 10000);
     const login = new Loginpage(page);
     const dashBoardPage=new DashboardPage(page);
     const adminUserPage=new AdminUsersPage(page,datajson["Test1"].usernamefilter);

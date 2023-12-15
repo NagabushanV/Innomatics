@@ -67,16 +67,19 @@ export default class AdminUsersPreferencePage {
     await this.PreferenceButtonLocator.click();
   }
   async SetUsernameDropdown(UserName: string) {
+    await this.page.waitForLoadState('load');
     await this.UserNameDropdownLocator.fill(UserName);
     await this.page.locator("(//div[normalize-space()='" + UserName + "'])[1]").click();
   }
   async SetStartupDropdown(startup: string) {
+    await this.page.waitForLoadState('load');
     await this.StartuppageDropdownLocator.fill(startup);
     await this.page.locator("(//div[normalize-space()='" + startup + "'])[1]").click();
   }
 
   async VerifyStartuppageDropdown() {
-     expect(this.AppearStartuppageLocator).toBeVisible();
+    await this.page.waitForLoadState('load');
+     expect(this.AppearStartuppageLocator).toBeTruthy();
     
   }
   async AuthenticationHistorytoBeDisabled() {

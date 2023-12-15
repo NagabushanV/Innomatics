@@ -39,7 +39,7 @@ export default class StocksettingpumpAttributes {
         this.TankAndPumpSetup = page.locator("//div[.='Tank & Pump Setup']");
         // this.SiteNameSearchdropdown = page.locator('[id="react-select-17-placeholder"]');
         this.SiteNameSearchdropdown = page.locator(".companysite-select__input-container");
-        this.SitenameSearchdropdownvalue = page.locator('(//input[@class="companysite-select__input"])[1]');
+        this.SitenameSearchdropdownvalue = page.locator('//div[@data-test-id="TankSetupSiteName"]// input');
         
         // this.SiteNameSearchdropdown = page.locator(".companysite-select__input-container').first()");
         this.EditButton = page.locator('(//button[@title="Edit"])[1]');
@@ -58,16 +58,18 @@ export default class StocksettingpumpAttributes {
     }
 
         async ClickOnStockBtn() {
+            await this.page.waitForLoadState('load');
             await this.StockBtnLocator.click();
         }
         async ClickOnSettingBtn() {
+        await this.page.waitForLoadState('load');
             await this.SettingBtnLocator.click();
         }
         async ClickOntankAndPumpAttribute() {
-            // await this.page.waitForLoadState("load");
             await this.TankandPumpAttributesLocator.click();
         }
         async ClickOnAddAttributes() {
+            await this.page.waitForLoadState('load');
             await this.AddTankAttributes.click();
         }
         async EnterAttributeValue(EnterAttribute: string): Promise<void> {
@@ -85,20 +87,22 @@ export default class StocksettingpumpAttributes {
             // await this.getByPlaceholder('Enter field label').fill('5625');
         }
         async ClickSaveButton() {
+            
             await this.SaveButton.click();
         }
         async ClickCloseBtn() {
             await this.CloseButton.click();
         }
         async ClickTankAndPumpSetup() {
+        
             await this.TankAndPumpSetup.click();
         }
         async SearchSiteName(sitename: string) { 
-            // await this.SiteNameSearchdropdown.click();
             await this.SitenameSearchdropdownvalue.fill(sitename);
-            await this.page.locator('//div[contains(text(),"' + sitename + '")]').first().click();
-            // await this.SiteNameSearchdropdown.fill(sitename);
-            // await this.page.getByText(sitename, { exact: true }).click();   
+            // await this.page.locator("//div[contains(text(),'" + sitename + "'])[1]").click();
+            await this.page.locator("(//div[normalize-space()='" + sitename + "'])[1]").click();
+            // await this.page.locator("(//div[normalize-space()='" + UserName + "'])[1]").click();
+              
         }
        
        

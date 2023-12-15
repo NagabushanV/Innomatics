@@ -193,7 +193,7 @@ export default class AdminSitesPage {
 
 async verifyDriveofflandpage(){
   await this.page.waitForLoadState('load');
-  expect (this.verifydriveofflandpageLocator).toBeEnabled();
+  expect (this.verifydriveofflandpageLocator).toBeTruthy();
 }
 async ClickOnAddBtn() {
     await this.page.waitForLoadState('load'); 

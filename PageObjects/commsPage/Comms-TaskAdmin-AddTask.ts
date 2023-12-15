@@ -50,7 +50,7 @@ constructor(page: Page,) {
 
     this.EnterTaskname = page.locator('//div[@data-test-id="TaskAdminAddEditTaskTaskDetailsTabTaskDetailsFormTaskName"]//input');
 
-    this.UrgencyDropdownLocator = page.locator('(//div[@data-test-id="TaskAdminAddEditTaskTaskDetailsTabTaskDetailsFormUrgencyId"]//input)[1]');
+    this.UrgencyDropdownLocator = page.locator('(//div[@data-test-id="TaskAdminAddEditTaskTaskDetailsTabTaskDetailsFormUrgencyId"]// input)[1]');
     this.UrgencyDropdownValue = page.locator('#react-select-5-input');
     this.UrgencyExactValue = page.locator('[data-test-id="TaskAdminAddEditTaskTaskDetailsTabTaskDetailsFormUrgencyId"]');
     
@@ -72,7 +72,7 @@ constructor(page: Page,) {
     this.Year0fYear = page.locator('//td[@class="rdtYear"]');
 
     this.Selectform = page.locator('#react-select-6-input');
-    this.Selectformclick = page.locator('(//div[@data-test-id="TaskAdminAddEditTaskTaskDetailsTabTaskDetailsFormExistingFormId"]//input)[1]');
+    this.Selectformclick = page.locator('(//div[@data-test-id="TaskAdminAddEditTaskTaskDetailsTabTaskDetailsFormExistingFormId"]// input)[2]');
 
     this.NextButton1 = page.locator('//button[@title="Next"]');
 
@@ -103,10 +103,8 @@ async AddTaskName(taskname: string) {
     await this.EnterTaskname.fill(taskname);
 }
 async ClickOnUrgencyDropdown(urgency: string) {
-    // await this.page.waitForLoadState('load');
     await this.UrgencyDropdownLocator.fill(urgency);
-    // await this.page.locator('//div[contains(text(),"' + urgency + '")]').first().click();
-    await this.UrgencyExactValue.getByText(urgency, { exact: true }).click();
+    await this.page.locator("(//div[normalize-space()='" + urgency + "'])[1]").click();
 
        
 }
@@ -189,9 +187,10 @@ async AddDuedate3(date:string,monthYear:string, month:string, year:string){
 
 
 async SelectFormoption(formoption: string) {
+
     await this.Selectformclick.fill(formoption);
-    // await this.page.locator('//div[contains(text(),"' + formoption + '")]').first().click();
-    await this.page.getByText(formoption, { exact: true }).click();
+    await this.page.locator("(//div[normalize-space()='" + formoption + "'])[1]").click();// await this.page.locator('//div[contains(text(),"' + formoption + '")]').first().click();
+    // await this.page.getByText(formoption, { exact: true }).click();
      
 }
 

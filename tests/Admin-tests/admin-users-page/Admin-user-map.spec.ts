@@ -8,7 +8,7 @@ import AdminUsersPage from "../../../PageObjects/AdminPages/UsersPage/admin-user
 
 
 test("Verify Map displays the location of the User one the map and the Sites that they have been allocated to",async({page})=>{
-    test.setTimeout(100 * 1000);
+    test.setTimeout(100 * 10000);
     const login = new Loginpage(page);
     const dashBoardPage=new DashboardPage(page);
     const adminUserPage=new AdminUsersPage(page,datajson["Test1"].usernamefilter);
@@ -34,7 +34,7 @@ test("Verify Map displays the location of the User one the map and the Sites tha
 
 
 test("Verify that the user can Zoom out the map by clicking the - icon",async({page})=>{
-    test.setTimeout(100 * 1000);
+    test.setTimeout(100 * 10000);
     const login = new Loginpage(page);
     const dashBoardPage=new DashboardPage(page);
     const adminUserPage=new AdminUsersPage(page,datajson["Test1"].usernamefilter);

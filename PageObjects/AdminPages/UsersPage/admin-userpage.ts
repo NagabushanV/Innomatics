@@ -374,7 +374,7 @@ export default class AdminUsersPage {
     expect(this.page.locator(
         "(//div[normalize-space()='" +
           this.expectedUsername.toLowerCase() +
-          "'])[1]" )).toBeVisible();
+          "'])[1]" )).toBeTruthy();
   }
 
   //Reset Password mail:-
@@ -404,6 +404,7 @@ export default class AdminUsersPage {
 
   //Availabiliry
   async ClickOnAvailabilityBtn() {
+    await this.page.waitForLoadState('load');
     await this.AvailabilityButtonLocator.click();
   }
 

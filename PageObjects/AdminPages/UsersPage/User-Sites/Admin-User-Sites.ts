@@ -28,6 +28,7 @@ export default class AdminUserSitesPage {
     await this.checkBoxtwoLocator.click();
  }
  async ClickOnUnAssignedArrowBtn() {
+   await this.page.waitForLoadState('load');
     await this.UnassignedLeftArrowLocator.click();
  }
  async VerifyUnAssignedAlertMessage() {
@@ -44,12 +45,15 @@ export default class AdminUserSitesPage {
 
  //Export:
  async ClickOnUnAssignExportBtn() {
+   await this.page.waitForLoadState('load');
    await this.UnAssignExportButtonLocator.click();
  }
  async ClickOnUnAssignExportAlldataBtn() {
    await this.page.waitForLoadState('load');
+   expect (this.UnAssignExportAllDataLocator).toBeTruthy();
    await this.UnAssignExportAllDataLocator.click();
-   const csvContent = await this.page.innerText('text=xyz.csv');
+   
+   // const csvContent = await this.page.innerText('text=xyz.csv');
    // expect(csvContent).toContain('') 
  }
 

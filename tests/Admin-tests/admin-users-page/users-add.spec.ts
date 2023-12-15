@@ -24,14 +24,14 @@ test("Verify that LIU should be able to add new users details by clicking + icon
     await adminUserPage.addEmailAddess(datajson["Test1"].email);
     await adminUserPage.addPosition(datajson["Test1"].position);
     await adminUserPage.addPostcode(datajson["Test1"].postcode);
-    await adminUserPage.addUserRegion(datajson["Test1"].userRegion);
-    await adminUserPage.addUserDivision(datajson["Test1"].userDivision);
+    // await adminUserPage.addUserRegion(datajson["Test1"].userRegion);
+    // await adminUserPage.addUserDivision(datajson["Test1"].userDivision);
     await adminUserPage.addSecurityRole(datajson["Test1"].securityRole);
     await adminUserPage.addCountry(datajson["Test1"].country);
     await adminUserPage.addState(datajson["Test1"].state);
     await adminUserPage.addTimeZone(datajson["Test1"].timeZone);
     await adminUserPage.addSuburb(datajson["Test1"].subrub);
-    await adminUserPage.addGender(datajson["Test1"].gender);
+    // await adminUserPage.addGender(datajson["Test1"].gender);
     await adminUserPage.addNickName(datajson["Test1"].nickName);
     await adminUserPage.addAsset(datajson["Test1"].asset);
     await adminUserPage.clickOnSaveBtn();

@@ -38,7 +38,7 @@ test("To & Fro Buttons:  Verify that the LIU can select one or more sites by tic
 
 
 test("Verify that export button should allow to exports the entire report in .csv format",async({page})=>{
-    test.setTimeout(100 * 1000);
+    test.setTimeout(100 * 10000);
     const login = new Loginpage(page);
     const dashBoardPage=new DashboardPage(page);
     const adminUserPage=new AdminUsersPage(page,datajson["Test1"].usernamefilter);

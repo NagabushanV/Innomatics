@@ -249,10 +249,13 @@ test("Verify that LIU should be able to navigate Driveoff ,Reports and Settings 
     
     await dashBoardPage.ClickOnDriveOFFBtn();
     await dashBoardPage.ClickOnDriveoffBtn();
+    await page.waitForTimeout(4000);
     await driveoffPage.verifyDriveofflandpage();
     await dashBoardPage.ClickOnReportsBtn();
+    await page.waitForTimeout(4000);
     await reportsPage.verifyReportslandpage();
     await dashBoardPage.ClickOnDriveoffSettingBtn();
+    await page.waitForTimeout(4000);
     await reportsPage.verifyDrivroffSettinglandPage();
 
 
